@@ -1,7 +1,8 @@
 import { FC, useCallback, useState } from "react";
-import { AppBar, Drawer, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Hidden, IconButton, Toolbar, Typography } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import Link from "next/link";
+import { DrawerNav, MenuLink } from "./NavBar.styles";
 
 export const Navbar: FC = () => {
   const [open, setOpen] = useState(false);
@@ -15,32 +16,42 @@ export const Navbar: FC = () => {
           <Typography variant="h6" component="h5" sx={{ flexGrow: 1 }}>
             Crypto News
           </Typography>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="Menu"
-            onClick={menuOnClick}
-            sx={{ mr: 2 }}
-          >
-            <Menu />
-          </IconButton>
+          <Hidden smUp>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="Menu"
+              onClick={menuOnClick}
+              sx={{ mr: 2 }}
+            >
+              <Menu />
+            </IconButton>
+          </Hidden>
+          <Hidden smDown>
+            <Link href="/">
+              <MenuLink>Crypto Currencies</MenuLink>
+            </Link>
+            <Link href="/">
+              <MenuLink>Exchanges</MenuLink>
+            </Link>
+            <Link href="/">
+              <MenuLink>News</MenuLink>
+            </Link>
+          </Hidden>
         </Toolbar>
       </AppBar>
-      <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
+      <DrawerNav anchor="right" open={open} onClose={() => setOpen(false)}>
         <Link href="/">
-          <a>Home</a>
+          <MenuLink>Crypto Currencies</MenuLink>
         </Link>
         <Link href="/">
-          <a>Crypto Currencies</a>
+          <MenuLink>Exchanges</MenuLink>
         </Link>
         <Link href="/">
-          <a>Exchanges</a>
+          <MenuLink>News</MenuLink>
         </Link>
-        <Link href="/">
-          <a>News</a>
-        </Link>
-      </Drawer>
+      </DrawerNav>
     </>
   );
 };

@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --collect-coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -29,10 +29,12 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "@testing-library/user-event": "^13.2.1",
+    "@types/css-mediaquery": "^0.1.1",
     "@types/react": "17.0.24",
     "@types/styled-components": "^5.1.14",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
+    "css-mediaquery": "^0.1.2",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-next": "11.1.2",
